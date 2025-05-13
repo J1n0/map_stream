@@ -8,7 +8,6 @@ import osmnx as ox
 import networkx as nx
 import polyline
 import os
-from dotenv import load_dotenv
 from streamlit_folium import st_folium
 from math import radians, sin, cos, sqrt, atan2
 from folium import Popup
@@ -31,8 +30,7 @@ session.mount("https://", TLSAdapter())
 st.set_page_config(page_title="네비게이션", layout="wide")
 st.title("베리어프리 내비게이션 앱")
 
-load_dotenv()
-GOOGLE_API_KEY = os.getenv('GOOGLE_API_KEY')
+GOOGLE_API_KEY = st.secrets["GOOGLE_API_KEY"]
 
 # 주소 → 위도/경도 변환 함수
 @st.cache_data
